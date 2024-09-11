@@ -55,6 +55,29 @@
 		return mysqli_affected_rows($koneksi);
 	}
 
+	function tambahAlternatif($data){
+		global $koneksi;
+		$nama_alternatif = $data['nama_alternatif'];
+
+		$sql = "INSERT INTO tb_alternatif VALUES('','$nama_alternatif')";
+		$eksekusi = mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+	}
+
+	function tambahPenilaian($data){
+		global $koneksi;
+		$id_alternatif = $data['id_alternatif'];
+		$kode_kriteria = $data['kode_kriteria'];
+		$nilai = $data['nilai'];
+
+		for ($i = 0; $i < count($kode_kriteria); $i++) {
+	        $sql = "INSERT INTO tb_penilaian VALUES('', '$id_alternatif', '{$kode_kriteria[$i]}', '{$nilai[$i]}')";
+	        mysqli_query($koneksi, $sql);
+	    }
+
+		return mysqli_affected_rows($koneksi);
+	}
 	
 	function ubahUser($data){
 		global $koneksi;
@@ -110,7 +133,33 @@
 		return mysqli_affected_rows($koneksi);
 	}
 
-	
+	function ubahAlternatif($data){
+		global $koneksi;
+		$id_alternatif = $data['id_alternatif'];
+		$nama_alternatif = $data['nama_alternatif'];
+
+		$sql = "UPDATE tb_alternatif SET nama_alternatif = '$nama_alternatif' WHERE id_alternatif = '$id_alternatif'";
+		$eksekusi = mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+	}
+
+	function ubahPenilaian($data){
+	    global $koneksi;
+	    $id_alternatif = $data['id_alternatif'];
+	    $kode_kriteria = $data['kode_kriteria'];
+	    $nilai = $data['nilai'];
+
+	    for ($i = 0; $i < count($kode_kriteria); $i++) {
+	        $sql = "UPDATE tb_penilaian 
+	                SET nilai = '{$nilai[$i]}' 
+	                WHERE id_alternatif = '$id_alternatif' 
+	                AND kode_kriteria = '{$kode_kriteria[$i]}'";
+	        mysqli_query($koneksi, $sql);
+	    }
+
+	    return mysqli_affected_rows($koneksi);
+	}	
 
 	function hapusUser($id){
 		global $koneksi;
@@ -128,6 +177,21 @@
 		return mysqli_affected_rows($koneksi);
 	}
 
+	function hapusAlternatif($id){
+		global $koneksi;
+		$sql = "DELETE FROM tb_alternatif WHERE id_alternatif = '$id'";
+		$eksekusi = mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+	}
+
+	function hapusPenilaian($id){
+		global $koneksi;
+		$sql = "DELETE FROM tb_penilaian WHERE id_alternatif = '$id'";
+		$eksekusi = mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+	}
 	
 	function setAlert($title='',$text='',$type='',$buttons=''){
 

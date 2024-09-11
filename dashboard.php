@@ -10,12 +10,21 @@
         $nama = ucwords($_SESSION['nama_lengkap']);
     }
 
-    $sql = "SELECT * FROM tb_transaksi
-    INNER JOIN tb_buku ON tb_transaksi.id_buku = tb_buku.id_buku
-    INNER JOIN tb_user ON tb_transaksi.id_user = tb_user.id_user
-   
-    ORDER BY id_transaksi DESC";
-    $eksekusi = mysqli_query($koneksi, $sql);
+    $sql_kriteria = "SELECT COUNT(kode_kriteria) as jumlah_kriteria FROM tb_kriteria";
+    $eksekusi_kriteria = mysqli_query($koneksi, $sql_kriteria);
+    $data_kriteria = mysqli_fetch_assoc($eksekusi_kriteria);
+
+    $sql_alternatif = "SELECT COUNT(id_alternatif) as jumlah_alternatif FROM tb_alternatif";
+    $eksekusi_alternatif = mysqli_query($koneksi, $sql_alternatif);
+    $data_alternatif = mysqli_fetch_assoc($eksekusi_alternatif);
+
+    $sql_penilaian = "SELECT COUNT(id_penilaian) as jumlah_penilaian FROM tb_penilaian";
+    $eksekusi_penilaian = mysqli_query($koneksi, $sql_penilaian);
+    $data_penilaian = mysqli_fetch_assoc($eksekusi_penilaian);
+
+    $sql_user = "SELECT COUNT(id_user) as jumlah_user FROM tb_user";
+    $eksekusi_user = mysqli_query($koneksi, $sql_user);
+    $data_user = mysqli_fetch_assoc($eksekusi_user);
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,30 +41,52 @@
     <div class="alert alert-info text-center">
         <h4><b>Selamat Datang <b><?= $nama; ?></b></b></h4>
     </div>
-            <h4>Beranda</h4>
-            
-            <!-- <div class="row">
-                
-                <div class="col mx-1 text-white bg-info rounded pt-2 pb-2">
-                    <h1>
-                        <i class="fa fa-box"></i>
-                        <span class="pull-right">
-                            <?php 
-                                $sql_transaksi = "SELECT *, count(tb_transaksi.id_transaksi) as jml_transaksi FROM tb_transaksi";
-                                $eksekusi_jml_transaksi = mysqli_query($koneksi, $sql_transaksi);
-                                $data_jml_transaksi = mysqli_fetch_assoc($eksekusi_jml_transaksi);
-                                echo $data_jml_transaksi['jml_transaksi'];
-                            ?>
-                        </span>
-                    </h1>
-                        <div>Jumlah Transaksi</div>
-                </div>      
-            </div> -->
-               
+
+    <h3 class="text-center p-3 mt-5">Beranda</h3>
+    <div class="row justify-content-center">
+        <div class="col-md-2 mx-3 text-center text-white bg-danger rounded pt-2 pb-2">
+            <h1>
+                <i class="fa fa-box"></i>
+                <span class="pull-right">
+                    <?= $data_kriteria['jumlah_kriteria']; ?>
+                </span>
+            </h1>
+                <div>Total Kriteria</div>
+        </div>
+        <div class="col-md-2 mx-3 text-center text-white bg-primary rounded pt-2 pb-2">
+            <h1>
+                <i class="fa fa-users"></i>
+                <span class="pull-right">
+                    <?= $data_alternatif['jumlah_alternatif']; ?>
+                </span>
+            </h1>
+                <div>Total Alternatif</div>
+        </div>
+        <div class="col-md-2 mx-3 text-center text-white bg-success rounded pt-2 pb-2">
+            <h1>
+                <i class="fa fa-pen-to-square"></i>
+                <span class="pull-right">
+                    <?= $data_penilaian['jumlah_penilaian']; ?>
+                </span>
+            </h1>
+                <div>Total Penilaian</div>
+        </div>
+        <div class="col-md-2 mx-3 text-center text-white bg-info rounded pt-2 pb-2">
+            <h1>
+                <i class="fa fa-user"></i>
+                <span class="pull-right">
+                    <?= $data_user['jumlah_user']; ?>
+                </span>
+            </h1>
+                <div>Total User</div>
+        </div>      
+    </div>
 </div>
     
 </body>
 
-<?php include 'footer.php'; ?>
+<div class="mt-5">
+    <?php include 'footer.php'; ?>
+</div>
 
 </html>

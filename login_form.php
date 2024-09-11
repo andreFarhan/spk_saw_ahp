@@ -77,7 +77,6 @@
 					</div>
 					<div class="form-group">
 						<button type="submit" name="login" class="btn btn-primary">LOGIN <i class="fa fa-sign-in-alt"></i></button>
-						<a href="registrasi.php" class="btn btn-success">REGISTRASI <i class="fa fa-user-plus"></i></a>
 					</div>
 				</form>
 			</div>
@@ -88,7 +87,7 @@
 <footer class="page-footer text-center text-md-left">
 	<div class="footer-copyright py-3 text-center">
       <div class="container-fluid">
-        &#xA9; 2024 Copyright: <a href="http://www.instagram.com/andre._.farhan" style="text-decoration: none;"> Andre Farhan </a>
+        &#xA9; 2024 Copyright: Yuvita Ratih Dewi
       </div>
     </div>
 </footer>

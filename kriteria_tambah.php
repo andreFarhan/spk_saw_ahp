@@ -27,7 +27,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Tambah Kriteria</title>
-	<link rel="icon" href="img/logo-motofix.png">
+	<link rel="icon" href="img/logo-perpustakaan.png">
 </head>
 <body>
 	<?php include 'nav.php'; ?>
@@ -46,7 +46,7 @@
 					</div>
 					<div class="form-group">
 						<label for="bobot_kriteria">BOBOT KRITERIA</label>
-						<input type="number" class="form-control" name="bobot_kriteria" required>
+						<input type="number" class="form-control" name="bobot_kriteria" step=".01" min="0" max="1" required>
 					</div>
 					<div class="form-group">
 						<label for="jenis_kriteria">JENIS KRITERIA</label>
