@@ -18,7 +18,26 @@
   });
 
   $('#Table').dataTable( {
-    "order" : []
+    "order" : [],
+    "pageLength": 7
+  } );
+
+  $(document).ready(function() {
+    $('#Table2').DataTable();
+  });
+
+  $('#Table2').dataTable( {
+    "order" : [],
+    "pageLength": 7
+  } );
+
+  $(document).ready(function() {
+    $('#Table3').DataTable();
+  });
+
+  $('#Table3').dataTable( {
+    "order" : [],
+    "pageLength": 7
   } );
 
   $(".button-collapse").sideNav();

@@ -32,9 +32,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ubah Kriteria</title>
-	<link rel="icon" href="img/logo-perpustakaan.png">
+	<link rel="icon" href="img/logo-arrow.png">
 </head>
-<body>
+<body class="bg-light">
 	<?php include 'nav.php'; ?>
 	<div class="container mt-5 mb-5 text-white">
 		<div class="row justify-content-center">

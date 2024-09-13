@@ -88,14 +88,28 @@
     </li>
     <?php endif ?>
 
-    <?php if ($_SERVER['REQUEST_URI'] == '/spk_saw_ahp/perhitungan.php'): ?>
-      <li class="nav-item active">
-        <a class="nav-link" href="perhitungan.php"><i class="fa fa-calculator"></i> Perhitungan</a>
-      </li>
+    <?php if ($_SERVER['SCRIPT_NAME'] == '/spk_saw_ahp/perhitungan_saw.php' OR $_SERVER['SCRIPT_NAME'] == '/spk_saw_ahp/perhitungan_ahp.php' OR $_SERVER['SCRIPT_NAME'] == '/spk_saw_ahp/perhitungan.php'): ?>
+    <li class="nav-item dropdown active">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-calculator"></i> Perhitungan
+      </a>
+      <div class="dropdown-menu mt-n2" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="perhitungan_saw.php"><i class="fa fa-calculator"></i> Perhitungan SAW</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="perhitungan_ahp.php"><i class="fa fa-calculator"></i> Perhitungan AHP</a>
+      </div>
+    </li>
     <?php else: ?>
-      <li class="nav-item">
-        <a class="nav-link" href="perhitungan.php"><i class="fa fa-calculator"></i> Perhitungan</a>
-      </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-calculator"></i> Perhitungan
+      </a>
+      <div class="dropdown-menu mt-n2" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="perhitungan_saw.php"><i class="fa fa-calculator"></i> Perhitungan SAW</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="perhitungan_ahp.php"><i class="fa fa-calculator"></i> Perhitungan AHP</a>
+      </div>
+    </li>
     <?php endif ?>
 
     <?php if ($_SERVER['REQUEST_URI'] == '/spk_saw_ahp/hasil_akhir.php'): ?>
@@ -138,12 +152,15 @@
       </li>
     </ul>
 
-      <?php $username = ucwords($_SESSION['username']); ?>
-       <?php if (isset($_SESSION['id_user'])): ?>
-          <b class="mr-sm-2 mb-n1 text-white">Admin, <?= $username; ?></b>
-       <?php else: ?>
-          <b class="mr-sm-2 mb-n1 text-white"><?= $username; ?></b>
-       <?php endif ?>
+    <?php 
+      $username = ucwords($_SESSION['username']);
+      $level = ucwords($_SESSION['level']);
+     ?>
+    <?php if (isset($_SESSION['id_user'])): ?>
+      <b class="mr-sm-2 mb-n1 text-white"><?= $level; ?>, <?= $username; ?></b>
+    <?php else: ?>
+      <b class="mr-sm-2 mb-n1 text-white"><?= $username; ?></b>
+    <?php endif ?>
 
   </div>
 </nav>

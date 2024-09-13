@@ -31,20 +31,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="icon" href="img/logo-perpustakaan.png">
+    <link rel="icon" href="img/logo-arrow.png">
 </head>
-<body>
+<body class="bg-light">
     <?php include 'nav.php'; ?>
 
     <div class="container mt-3">
-        <h2></h2>
-    <div class="alert alert-info text-center">
+    <div class="alert alert-info text-center mt-4">
         <h4><b>Selamat Datang <b><?= $nama; ?></b></b></h4>
     </div>
 
-    <h3 class="text-center p-3 mt-5">Beranda</h3>
+    <h3 class="mt-5"></h3>
     <div class="row justify-content-center">
-        <div class="col-md-2 mx-3 text-center text-white bg-danger rounded pt-2 pb-2">
+        <a href="kriteria_show.php" class="col-md-2 mx-3 text-center text-white bg-danger rounded pt-2 pb-2" style="text-decoration: none;">
             <h1>
                 <i class="fa fa-box"></i>
                 <span class="pull-right">
@@ -52,8 +51,8 @@
                 </span>
             </h1>
                 <div>Total Kriteria</div>
-        </div>
-        <div class="col-md-2 mx-3 text-center text-white bg-primary rounded pt-2 pb-2">
+        </a>
+        <a href="alternatif_show.php" class="col-md-2 mx-3 text-center text-white bg-success rounded pt-2 pb-2" style="text-decoration: none;">
             <h1>
                 <i class="fa fa-users"></i>
                 <span class="pull-right">
@@ -61,17 +60,8 @@
                 </span>
             </h1>
                 <div>Total Alternatif</div>
-        </div>
-        <div class="col-md-2 mx-3 text-center text-white bg-success rounded pt-2 pb-2">
-            <h1>
-                <i class="fa fa-pen-to-square"></i>
-                <span class="pull-right">
-                    <?= $data_penilaian['jumlah_penilaian']; ?>
-                </span>
-            </h1>
-                <div>Total Penilaian</div>
-        </div>
-        <div class="col-md-2 mx-3 text-center text-white bg-info rounded pt-2 pb-2">
+        </a>
+        <a href="user_show.php" class="col-md-2 mx-3 text-center text-white bg-info rounded pt-2 pb-2" style="text-decoration: none;">
             <h1>
                 <i class="fa fa-user"></i>
                 <span class="pull-right">
@@ -79,7 +69,30 @@
                 </span>
             </h1>
                 <div>Total User</div>
-        </div>      
+        </a>      
+    </div>
+    <div class="row justify-content-center mt-5">        
+        <a href="perhitungan.php" class="col-md-2 mx-3 text-center text-white bg-primary rounded pt-2 pb-2" style="text-decoration: none;">
+            <h1>
+                <i class="fa fa-pen-to-square"></i>
+                <span class="pull-right">
+                    <?= $data_penilaian['jumlah_penilaian']; ?>
+                </span>
+            </h1>
+                <div>Total Penilaian</div>
+        </a>
+        <a href="perhitungan.php" class="col-md-2 mx-3 text-center text-white bg-warning rounded pt-2 pb-2" style="text-decoration: none;">
+            <h1>
+                <i class="fa fa-calculator"></i>
+            </h1>
+                <div>Perhitungan</div>
+        </a>
+        <a href="hasil_akhir.php" class="col-md-2 mx-3 text-center text-white bg-secondary rounded pt-2 pb-2" style="text-decoration: none;">
+            <h1>
+                <i class="fa fa-chart-column"></i>
+            </h1>
+                <div>Hasil Akhir</div>
+        </a>
     </div>
 </div>
     
